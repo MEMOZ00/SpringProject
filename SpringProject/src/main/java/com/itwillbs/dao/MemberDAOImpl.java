@@ -1,6 +1,7 @@
 package com.itwillbs.dao;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -8,6 +9,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSession;
 //import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.itwillbs.domain.MemberDTO;
 
@@ -78,6 +80,16 @@ public class MemberDAOImpl implements MemberDAO{
 		// myBatise memberMapper.xml의 sql 구문 호출하여 사용
 		// .insert(sql구문이름, ?표에입력될 변수명)
 		sqlSession.delete(namespace+".deleteMember", memberDTO);
+	}
+	
+	@Override
+	public List<MemberDTO> getMemberList() {
+		// 디비작업 
+		System.out.println("MemberDAOImpl deleteMember()");
+		// template.update(sql, memberDTO.getId(), memberDTO.getPass(),memberDTO.getName(), memberDTO.getDate());
+		// myBatise memberMapper.xml의 sql 구문 호출하여 사용
+		// .insert(sql구문이름, ?표에입력될 변수명)
+		return sqlSession.selectList(namespace+".getMemberList"); 
 	}
 	
 }// class

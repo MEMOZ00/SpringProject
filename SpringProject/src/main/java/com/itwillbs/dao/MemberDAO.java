@@ -1,5 +1,9 @@
 package com.itwillbs.dao;
 
+import java.util.List;
+
+import org.springframework.ui.Model;
+
 import com.itwillbs.domain.MemberDTO;
 
 public interface MemberDAO {
@@ -14,5 +18,7 @@ public interface MemberDAO {
 	public void updateMember(MemberDTO memberDTO);
 	
 	public void deleteMember(MemberDTO memberDTO);
+	
+	public List<MemberDTO> getMemberList();
 	
 }// class

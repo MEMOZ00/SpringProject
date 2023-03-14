@@ -32,6 +32,10 @@
 		where id = #{id}
 	</delete>
 	
+	<select id="getMemberList" resultType="com.itwillbs.domain.MemberDTO">
+		select * from members
+	</select>
+	
 <!-- 	<select id="selectBlog" parameterType="int" resultType="Blog">
         select * from Blog where id = #{id}
     </select>

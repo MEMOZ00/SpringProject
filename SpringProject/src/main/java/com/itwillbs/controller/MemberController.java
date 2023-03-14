@@ -1,5 +1,7 @@
 package com.itwillbs.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -232,15 +234,6 @@ public class MemberController {
 			return "member/msg";
 		}
 	}
-
-	@RequestMapping(value = "/member/list", method = RequestMethod.GET)
-	public String list(HttpSession session) {
-		System.out.println("MemberController list()");
-		// DB작업
-		
-		// 가상주소에서 주소변경 없이 이동 
-		return "member/list";
-	}
 	
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
@@ -250,6 +243,17 @@ public class MemberController {
 		
 		// 가상주소에서 주소변경 하면서 이동
 		return "redirect:/member/main";
+	}
+	
+	@RequestMapping(value = "/member/list", method = RequestMethod.GET)
+	public String list(Model model) {
+		System.out.println("MemberController list()");
+		
+		List<MemberDTO> memberList = memberService.getMemberList();
+		model.addAttribute("memberList", memberList);
+		
+		// 가상주소에서 주소변경 하면서 이동
+		return "member/list";
 	}
 	
 }//class
