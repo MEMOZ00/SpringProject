@@ -60,17 +60,49 @@ public class BoardController {
 		if(pageNum == null) {
 			pageNum = "1";
 		} 
-		int CurrnetPage = Integer.parseInt(pageNum);
+		int CurrentPage = Integer.parseInt(pageNum);
 		
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
+		pageDTO.setCurrentPage(CurrentPage);
 		
 		List<BoardDTO> boardList = boardService.getBoardList(pageDTO);
 		
+		//페이징 처리
+		int count = boardService.getBoardCount();
+		int pageBlock = 10;
+		int startPage = (CurrentPage-1)/pageBlock*pageBlock+1;
+		int endPage=startPage+pageBlock-1;
+		int pageCount=count/pageSize+(count%pageSize==0?0:1);
+		if(endPage > pageCount){
+		 	endPage = pageCount;
+		}
+		
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+		
 		model.addAttribute("boardList", boardList);
+		model.addAttribute("pageDTO", pageDTO);
 		
 		// 가상주소에서 주소변경 없이 이동
 		return "board/list";
+	}
+	
+	@RequestMapping(value = "/board/content", method = RequestMethod.GET)
+	public String content(HttpServletRequest request, Model model) {
+		System.out.println("BoardController content()");
+		// 처리작업
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		BoardDTO boardDTO = boardService.getBoard(num);
+		
+		model.addAttribute("boardDTO", boardDTO);
+		
+		// 가상주소에서 주소변경 없이 이동
+		return "board/content";
 	}
 
 }//class

@@ -17,11 +17,22 @@
 		from board
 	</select>
 	
-	<select id="getBoardList" resultType="com.itwillbs.domain.boardDTO">
+	<select id="getBoardList" resultType="com.itwillbs.domain.BoardDTO">
 		select * 
 		from board
 		order by num desc
-		limit #{startRow}, #{pageSize}
+		limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id="getBoardCount" resultType="java.lang.Integer">
+		select count(*)
+		from board
+	</select>
+	
+	<select id="getBoard" resultType="com.itwillbs.domain.BoardDTO">
+		select *
+		from board
+		where num = #{num}
 	</select>
 	
 <!-- 	<select id="selectBlog" parameterType="int" resultType="Blog">

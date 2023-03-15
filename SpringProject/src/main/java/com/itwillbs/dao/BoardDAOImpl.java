@@ -42,4 +42,19 @@ public class BoardDAOImpl implements BoardDAO{
 		
 		return sqlSession.selectList(namespace+".getBoardList", pageDTO);
 	} 
+	
+	@Override
+	public int getBoardCount() {
+		System.out.println("BoardDAOImpl getBoardCount()");
+		
+		return sqlSession.selectOne(namespace+".getBoardCount");
+	} 
+	
+	@Override
+	public BoardDTO getBoard(int num) {
+		System.out.println("BoardDAOImpl getBoard()");
+		
+		return sqlSession.selectOne(namespace+".getBoard", num);
+	} 
+	
 }//class

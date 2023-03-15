@@ -12,4 +12,8 @@ public interface BoardDAO {
 	public Integer getMaxNum();
 	
 	public List<BoardDTO> getBoardList(PageDTO pageDTO);
+	
+	public int getBoardCount();
+	
+	public BoardDTO getBoard(int num);
 }

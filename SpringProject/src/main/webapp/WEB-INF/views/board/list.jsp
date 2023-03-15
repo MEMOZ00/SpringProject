@@ -53,7 +53,7 @@ int pageCount=(Integer)request.getAttribute("pageCount");  */
 		
 %>
 <h1>board/list.jsp</h1>
-<h1><a href="BoardWriteForm.bo">글쓰기</a></h1>
+<h1><a href="${pageContext.request.contextPath}/board/write">글쓰기</a></h1>
 <table border="1">
 	<tr>
 	<td>글번호</td>
@@ -71,7 +71,7 @@ int pageCount=(Integer)request.getAttribute("pageCount");  */
 	<tr>
 	<td>${boardDTO.num}</td>
 	<td>${boardDTO.name}</td>
-	<td><a href="BoardContent.bo?num=${boardDTO.num}">${boardDTO.subject}</a></td>
+	<td><a href="${pageContext.request.contextPath}/board/content?num=${boardDTO.num}">${boardDTO.subject}</a></td>
 	<td>${boardDTO.date}</td>
 	<td>${boardDTO.readcount}</td>
 	</tr>	
@@ -118,13 +118,19 @@ int pageCount=(Integer)request.getAttribute("pageCount");  */
 // 10페이지 이전
 //if(startPage > pageBlock){
 	%>
-<a href="BoardList.bo?pageNum=">[10페이지 이전]</a>
+<c:if test="${pageDTO.startPage > pageDTO.pageBlock}">
+	<a href="${pageContext.request.contextPath}/board/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">[10페이지 이전]</a>
+</c:if>
 	<%
 //}
 
 //for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="BoardList.bo?pageNum="></a> 
+	
+<c:forEach var="i" begin="${pageDTO.startPage}" end="${pageDTO.endPage}" step="1">
+	<a href="${pageContext.request.contextPath}/board/list?pageNum=${i}">${i}</a> 
+</c:forEach> 
+
 	<%
 //}
 
@@ -137,7 +143,9 @@ int pageCount=(Integer)request.getAttribute("pageCount");  */
 //10페이지 다음
 //if(endPage < pageCount){
 	%>
-<a href="BoardList.bo?pageNum=">[10페이지 다음]</a>
+<c:if test="${pageDTO.endPage < pageDTO.pageCount}">
+	<a href="${pageContext.request.contextPath}/board/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">[10페이지 다음]</a>
+</c:if>
 	<%
 //}
 
