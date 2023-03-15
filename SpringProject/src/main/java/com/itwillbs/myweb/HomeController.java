@@ -37,11 +37,11 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		// request => 스프링 model 데이터 담기 
-		model.addAttribute("serverTime", formattedDate );
+		// model.addAttribute("serverTime", formattedDate );
 		
 		// /WEB-INF/views/파일이름.jsp
 		// /WEB-INF/views/home.jsp
-		return "home";
+		return "redirect:/member/main";
 	}
 	
 	//가상주소 http://localhost:8080/myweb/insert.me   

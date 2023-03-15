@@ -17,7 +17,9 @@
      => http://localhost:8080/myweb/member/member/insertPro-->
      
 <!-- 프로젝트명/member/insertPro  
-     => http://localhost:8080/프로젝트명/member/insertPro -->     
+     => http://localhost:8080/프로젝트명/member/insertPro -->  
+
+<img src="${pageContext.request.contextPath}/resources/sub_back.png">   
 <h1>member/insertForm.jsp</h1>
 <form action="${pageContext.request.contextPath}/member/insertPro" method="post">
 아이디 : <input type="text" name="id"><br>

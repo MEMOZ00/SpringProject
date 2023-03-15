@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 파일이름 대신 namespace 이름을 불러서 사용 -->
+
+<mapper namespace="com.itwillbs.mappers.boardMapper">
+	
+	<!-- ?대신 memberDTO의 멤버변수명 사용 #{id}-->
+	<insert id="insertBoard">
+		insert into board(num,name,subject,content,readcount,date,file) 
+		values(#{num},#{name},#{subject},#{content},#{readcount},#{date},#{file})
+	</insert>
+	
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		select max(num)
+		from board
+	</select>
+	
+	<select id="getBoardList" resultType="com.itwillbs.domain.boardDTO">
+		select * 
+		from board
+		order by num desc
+		limit #{startRow}, #{pageSize}
+	</select>
+	
+<!-- 	<select id="selectBlog" parameterType="int" resultType="Blog">
+        select * from Blog where id = #{id}
+    </select>
+    
+    <insert id="">
+    </insert>
+    
+    <update id="">
+    </update>
+    
+    <delete id="">
+    </delete> -->
+    
+</mapper>
+
+
+
