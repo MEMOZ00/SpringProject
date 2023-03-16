@@ -35,6 +35,16 @@
 		where num = #{num}
 	</select>
 	
+	<update id="updateBoard">
+		update board set subject = #{subject}, content = #{content}
+		where num = #{num}
+	</update>
+	
+	<delete id="deleteBoard">
+		delete from board 
+		where num = #{num}
+	</delete>
+	
 <!-- 	<select id="selectBlog" parameterType="int" resultType="Blog">
         select * from Blog where id = #{id}
     </select>

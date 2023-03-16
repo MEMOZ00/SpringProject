@@ -37,6 +37,15 @@
 	<context:component-scan base-package="com.itwillbs.service" />
 	<context:component-scan base-package="com.itwillbs.dao" />
 	
+	<!-- 	파일업로드  객체생성 , 업로드 파일 크기 지정 10M -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
 	
+	<!-- 파일업로드 폴더 경로 설정 => 이름 지정 => 자바파일 이름을 가져가서 사용-->
+	<!-- src/main/webapp/resources/upload의 물리적경로 value="물리적인경로" -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\Users\\user\\git\\SpringProject\\SpringProject\\src\\main\\webapp\\resources\\upload"></beans:constructor-arg>
+	</beans:bean>
 	
 </beans:beans>

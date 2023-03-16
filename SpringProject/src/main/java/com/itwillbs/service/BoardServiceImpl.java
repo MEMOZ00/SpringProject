@@ -71,5 +71,24 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.getBoard(num);
 	}
 	
+	@Override
+	public void updateBoard(BoardDTO boardDTO) {
+		System.out.println("BoardServiceImpl updateBoard()");
+		// form input에서 자동으로 set함수로 할당되는 값 = name, subject, content
+		// DAO단에서 할당할 값 = num, readcount, date, file
+		// num => DB단의 결과를 가져와서 계산해야하는 값
+		
+		boardDAO.updateBoard(boardDTO);
+	}
+	
+	@Override
+	public void deleteBoard(int num) {
+		System.out.println("BoardServiceImpl deleteBoard()");
+		// form input에서 자동으로 set함수로 할당되는 값 = name, subject, content
+		// DAO단에서 할당할 값 = num, readcount, date, file
+		// num => DB단의 결과를 가져와서 계산해야하는 값
+		
+		boardDAO.deleteBoard(num);
+	}
 	
 }//class

@@ -46,7 +46,7 @@ ${sessionScope.id}님 로그인 하셨습니다.
 %>
 <a href="${pageContext.request.contextPath}/board/write">글쓰기</a><br>
 <a href="${pageContext.request.contextPath}/board/list">글목록</a><br>
-<a href="FileBoardWriteForm.bo">첨부파일 글쓰기</a><br>
+<a href="${pageContext.request.contextPath}/board/fwrite">첨부파일 글쓰기</a><br>
 </body>
 </html>
 

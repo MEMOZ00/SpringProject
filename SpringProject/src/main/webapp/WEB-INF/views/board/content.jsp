@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,9 +70,13 @@
 	// 세션값  , 글쓴이  => 일치 => 자기자신 쓴 글(글수정, 글삭제 보이기)
 //	if(id.equals(dto.getName())){
 %>
-<input type="button" value="글수정" onclick="location.href='BoardUpdateForm.bo?num=${boardDTO.num}'">
-<input type="button" value="글삭제" onclick="location.href='BoardDeletePro.bo?num=${boardDTO.num}'">	
-<input type="button" value="파일 글수정" onclick="location.href='FileBoardUpdateForm.bo?num=${boardDTO.num}'">
+<c:if test="${! empty sessionScope.id }">
+	<c:if test="${sessionScope.id eq boardDTO.name }">
+		<input type="button" value="글수정" onclick="location.href='${pageContext.request.contextPath }/board/update?num=${boardDTO.num}'">
+		<input type="button" value="글삭제" onclick="location.href='${pageContext.request.contextPath }/board/delete?num=${boardDTO.num}'">	
+		<input type="button" value="파일 글수정" onclick="location.href='${pageContext.request.contextPath }/board/fileUpdate?num=${boardDTO.num}'">
+	</c:if>
+</c:if>
 <%
 //	}
 //}
