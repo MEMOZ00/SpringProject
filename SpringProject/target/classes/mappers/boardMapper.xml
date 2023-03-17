@@ -45,6 +45,11 @@
 		where num = #{num}
 	</delete>
 	
+	<update id="fupdateBoard">
+		update board set subject = #{subject}, content = #{content}, file = #{file}
+		where num = #{num}
+	</update>
+	
 <!-- 	<select id="selectBlog" parameterType="int" resultType="Blog">
         select * from Blog where id = #{id}
     </select>

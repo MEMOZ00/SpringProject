@@ -1,4 +1,3 @@
-<%@page import="com.itwillbs.board.db.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,22 +16,22 @@
 // //BoardDTO  dto = dao.getBoard(num) 메서드 호출
 // BoardDTO dto=dao.getBoard(num);
 
-BoardDTO dto=(BoardDTO)request.getAttribute("dto");
+// BoardDTO dto=(BoardDTO)request.getAttribute("dto");
 %>
 <h1>파일 글수정</h1>
-<form action="FileBoardUpdatePro.bo" method="post" enctype="multipart/form-data">
-<input type="hidden" name="num" value="<%=dto.getNum()%>">
+<form action="${pageContext.request.contextPath }/board/fupdatePro" method="post" enctype="multipart/form-data">
+<input type="hidden" name="num" value="${boardDTO.num }">
 <table border="1">
 <tr><td>글쓴이</td>
-    <td><input type="text" name="name" value="<%=dto.getName() %>" readonly></td></tr>
+    <td><input type="text" name="name" value="${boardDTO.name }" readonly></td></tr>
 <tr><td>글제목</td>
-    <td><input type="text" name="subject" value="<%=dto.getSubject() %>"></td></tr>  
+    <td><input type="text" name="subject" value="${boardDTO.subject }"></td></tr>  
 <tr><td>첨부파일</td>
-    <td><input type="file" name="file" ><%=dto.getFile() %>
-    <input type="hidden" name="oldfile" value="<%=dto.getFile()%>">
+    <td><input type="file" name="file" >${boardDTO.file }
+    <input type="hidden" name="oldfile" value="${boardDTO.file }">
     </td></tr>   
 <tr><td>글내용</td>
-    <td><textarea name="content" rows="10" cols="20"><%=dto.getContent() %></textarea></td></tr>
+    <td><textarea name="content" rows="10" cols="20">${boardDTO.content }</textarea></td></tr>
 <tr><td colspan="2"><input type="submit" value="글수정"></td></tr>    
 </table>
 </form>

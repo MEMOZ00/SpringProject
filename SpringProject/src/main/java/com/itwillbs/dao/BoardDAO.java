@@ -20,4 +20,6 @@ public interface BoardDAO {
 	public void updateBoard(BoardDTO boardDTO);
 	
 	public void deleteBoard(int num);
+	
+	public void fupdateBoard(BoardDTO boardDTO);
 }
